@@ -10,14 +10,21 @@ public class Store {
     private LinkedList productsInStock;
     private LinkedList productsSold;
 
-    public Store(String name){
+    public Store(String name) {
         this.name = name;
         this.productsForSale = new LinkedList();
         this.productsInStock = new LinkedList();
         this.productsSold = new LinkedList();
     }
 
-    public void registerProduct(Product productToBeRegistered){
+    public void registerProduct(Product productToBeRegistered) {
         productsInStock.registerNewProduct(productToBeRegistered);
     }
+
+    public void listAllProductsInStock() {
+        System.out.println("Produtos em estoque: ");
+        productsInStock.listAllProducts();
+    }
+
+
 }

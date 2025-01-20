@@ -21,4 +21,12 @@ public class Product {
     public Product getLinkProduct() {
         return linkProduct;
     }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "name='" + name + '\'' +
+                ", barCode=" + barCode +
+                '}';
+    }
 }
