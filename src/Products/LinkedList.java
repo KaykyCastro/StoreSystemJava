@@ -1,5 +1,6 @@
 package Products;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class LinkedList {
@@ -19,16 +20,18 @@ public class LinkedList {
     public void registerNewProduct(Product productToBeRegistered) {
         try{
             if(headProduct == null){
-                headProduct = productToBeRegistered;
+                headProduct = new Product(productToBeRegistered.getName(), productToBeRegistered.getBarCode());
                 quantityOfProdutcs++;
+                System.out.println("Produto adicionado com sucesso!");
             } else {
-                Product linkedProduct = headProduct.getLinkProduct();
-                while (linkedProduct != null){
-                    linkedProduct = linkedProduct.getLinkProduct();
+                Product current = headProduct;
+                while (current.getLinkProduct() != null){
+                    current = current.getLinkProduct();
                 }
 
-                linkedProduct = productToBeRegistered;
+                current.setLinkProduct(productToBeRegistered);
                 quantityOfProdutcs++;
+                System.out.println("Porduto adicionado com sucesso!");
             }
         } catch (Exception e){
             System.out.println(e);
@@ -36,18 +39,18 @@ public class LinkedList {
 
     }
 
-    public void listAllProducts() {
-        if(headProduct != null) {
-            if(quantityOfProdutcs == 1){
-               System.out.println(headProduct);
-            } else {
-                Product headProductToList = headProduct;
-                while (headProductToList != null){
-                    System.out.println(headProductToList);
-                    headProductToList = headProductToList.getLinkProduct();
-                }
+    public List<Product> listAllProducts() {
+        if (headProduct == null){
+            System.out.println("Não há nenhum produto!");
+        } else {
+            List<Product> products = new ArrayList<>();
+            Product current = headProduct;
+            while (current != null){
+                products.add(current);
+                current = current.getLinkProduct();
             }
+            return products;
         }
+        return null;
     }
-
 }

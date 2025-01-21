@@ -23,7 +23,9 @@ public class Store {
 
     public void listAllProductsInStock() {
         System.out.println("Produtos em estoque: ");
-        productsInStock.listAllProducts();
+        for(Product product : productsInStock.listAllProducts()){
+            System.out.println(product);
+        }
     }
 
 

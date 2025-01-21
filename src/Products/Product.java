@@ -22,6 +22,10 @@ public class Product {
         return linkProduct;
     }
 
+    public void setLinkProduct(Product linkProduct) {
+        this.linkProduct = linkProduct;
+    }
+
     @Override
     public String toString() {
         return "Product{" +
